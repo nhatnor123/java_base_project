@@ -1,0 +1,24 @@
+spring:
+  main:
+    banner-mode: off
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+
+server:
+  port: ${SERVER_PORT}
+
+logging:
+  level:
+    ROOT: info
+    com.example.demo: ${LOGGING_LEVEL}
+    org:
+      springframework:
+        boot:
+          autoconfigure: error
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "loggers"
