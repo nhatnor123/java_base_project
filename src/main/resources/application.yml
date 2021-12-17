@@ -4,21 +4,27 @@ spring:
   jackson:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
-
+  lifecycle:
+    timeout-per-shutdown-phase: ${GRACEFUL_SHUTDOWN_TIMEOUT:60s}
+  profiles:
+    active: ${PROFILE_ACTIVE:dev}
 server:
-  port: ${SERVER_PORT}
+  port: ${SERVER_PORT:80}
+  shutdown: graceful
 
 logging:
   level:
-    ROOT: info
-    com.example.demo: ${LOGGING_LEVEL}
+    ROOT: INFO
+    com.example.demo: ${LOGGING_LEVEL:DEBUG}
     org:
       springframework:
         boot:
-          autoconfigure: error
+          autoconfigure: ERROR
 
 management:
   endpoints:
     web:
       exposure:
         include: "loggers"
+
+useSwagger: ${ENABLE_SWAGGER:true}

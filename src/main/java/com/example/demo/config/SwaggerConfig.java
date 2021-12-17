@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -17,6 +18,7 @@ import static com.google.common.base.Predicates.or;
 import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
+@ConditionalOnExpression(value = "${useSwagger:false}")
 @EnableSwagger2
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfig {
@@ -28,8 +30,10 @@ public class SwaggerConfig {
                 .paths(or(
                         regex("/api.*"),
                         regex("/common.*"),
-                        regex("/healtcheck")
+                        regex("/healthcheck.*")
                 ))
+//                .apis(RequestHandlerSelectors.any())
+//                .paths(PathSelectors.any())
                 .build().apiInfo(apiInfo());
     }
 

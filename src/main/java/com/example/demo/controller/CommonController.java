@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/common")
+@RequestMapping(value = "/api/common")
 public class CommonController {
 
     public final ConfigRepo configRepo;

@@ -31,10 +31,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                .antMatchers(HttpMethod.GET, "/healthcheck").permitAll()
                 .antMatchers("/swagger-ui.html",
                         "/v2/api-docs", "/swagger-resources/configuration/ui", "/configuration/security", "/configuration/ui",
                         "/swagger-resources", "/swagger-resources/configuration/security", "/webjars/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/healthcheck/**").permitAll()
                 .antMatchers("/api/**", "/cfg/**").permitAll()
                 .anyRequest().authenticated() // other requests need to authenticated
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
