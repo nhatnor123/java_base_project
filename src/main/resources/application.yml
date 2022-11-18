@@ -8,6 +8,16 @@ spring:
     timeout-per-shutdown-phase: ${GRACEFUL_SHUTDOWN_TIMEOUT:60s}
   profiles:
     active: ${PROFILE_ACTIVE:dev}
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/do_an_tot_nghiep
+    username: root
+    password: 30121998
+
 server:
   port: ${SERVER_PORT:80}
   shutdown: graceful
