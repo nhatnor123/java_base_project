@@ -14,12 +14,12 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/do_an_tot_nghiep
+    url: jdbc:mysql://127.0.0.1:3306/library_management
     username: root
     password: 30121998
 
 server:
-  port: ${SERVER_PORT:80}
+  port: ${SERVER_PORT:8080}
   shutdown: graceful
 
 logging:
@@ -38,3 +38,6 @@ management:
         include: "loggers"
 
 useSwagger: ${ENABLE_SWAGGER:true}
+
+jwt:
+  secret: mysecret
